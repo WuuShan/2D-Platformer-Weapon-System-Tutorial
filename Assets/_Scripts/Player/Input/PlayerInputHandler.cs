@@ -215,12 +215,12 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// 使用跳跃输入
+    /// 已使用跳跃
     /// </summary>
     public void UseJumpInput() => JumpInput = false;
 
     /// <summary>
-    /// 使用冲刺输入
+    /// 已使用冲刺
     /// </summary>
     public void UseDashInput() => DashInput = false;
 
@@ -253,11 +253,11 @@ public class PlayerInputHandler : MonoBehaviour
 public enum CombatInputs
 {
     /// <summary>
-    /// 主要
+    /// 主武器
     /// </summary>
     primary,
     /// <summary>
-    /// 次要
+    /// 副武器
     /// </summary>
     secondary
 }

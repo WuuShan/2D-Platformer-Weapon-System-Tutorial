@@ -51,7 +51,7 @@ public class PlayerState
     }
 
     /// <summary>
-    /// 进入
+    /// 进入状态时，执行一次
     /// </summary>
     public virtual void Enter()
     {
@@ -63,7 +63,7 @@ public class PlayerState
     }
 
     /// <summary>
-    /// 退出
+    /// 退出状态时，执行一次
     /// </summary>
     public virtual void Exit()
     {
@@ -72,12 +72,12 @@ public class PlayerState
     }
 
     /// <summary>
-    /// 逻辑更新
+    /// 每帧执行一次
     /// </summary>
     public virtual void LogicUpdate() { }
 
     /// <summary>
-    /// 物理更新
+    /// 固定帧率执行一次
     /// </summary>
     public virtual void PhysicsUpdate()
     {
@@ -85,17 +85,17 @@ public class PlayerState
     }
 
     /// <summary>
-    /// 检查
+    /// 检查各种物理效果
     /// </summary>
     public virtual void DoChecks() { }
 
     /// <summary>
-    /// 动画触发
+    /// 触发动画事件Event
     /// </summary>
     public virtual void AnimationTrigger() { }
 
     /// <summary>
-    /// 动画结束触发
+    /// 触发动画结束事件Event
     /// </summary>
     public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
 }
