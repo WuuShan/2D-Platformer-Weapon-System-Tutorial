@@ -90,12 +90,12 @@ public class PlayerState
     public virtual void DoChecks() { }
 
     /// <summary>
-    /// 触发动画事件Event
+    /// 动画事件触发
     /// </summary>
     public virtual void AnimationTrigger() { }
 
     /// <summary>
-    /// 触发动画结束事件Event
+    /// 动画结束事件触发
     /// </summary>
     public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
 }
