@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bardent.Utilities;
 
 namespace Bardent.Weapons
 {
@@ -10,6 +11,24 @@ namespace Bardent.Weapons
     /// </summary>
     public class Weapon : MonoBehaviour
     {
+        /// <summary>
+        /// 攻击段数
+        /// </summary>
+        [SerializeField] private int numberOfAttacks;
+        /// <summary>
+        /// 重置攻击计数器的冷却时间
+        /// </summary>
+        [SerializeField] private float attackCounterResetCooldown;
+
+        /// <summary>
+        /// 当前武器攻击计数器
+        /// </summary>
+        public int CurrentAttackCounter
+        {
+            get => currentAttackCounter;
+            private set => currentAttackCounter = value >= numberOfAttacks ? 0 : value;
+        }
+
         /// <summary>
         /// 武器完成攻击事件
         /// </summary>
@@ -30,13 +49,26 @@ namespace Bardent.Weapons
         private AnimationEventHandler eventHandler;
 
         /// <summary>
+        /// 当前攻击计数器
+        /// </summary>
+        private int currentAttackCounter;
+
+        /// <summary>
+        /// 负责重置攻击计数器的计时器
+        /// </summary>
+        private Timer attackCounterResetTimer;
+
+        /// <summary>
         /// 使用武器攻击时，执行一次
         /// </summary>
         public void Enter()
         {
             print($"{transform.name} enter");
 
+            attackCounterResetTimer.StopTimer();
+
             anim.SetBool("active", true);
+            anim.SetInteger("counter", CurrentAttackCounter);
         }
 
         /// <summary>
@@ -45,6 +77,9 @@ namespace Bardent.Weapons
         private void Exit()
         {
             anim.SetBool("active", false);
+
+            CurrentAttackCounter++;
+            attackCounterResetTimer.StartTimer();
 
             OnExit?.Invoke();
         }
@@ -55,18 +90,32 @@ namespace Bardent.Weapons
             anim = baseGameObject.GetComponent<Animator>();
 
             eventHandler = baseGameObject.GetComponent<AnimationEventHandler>();
+
+            attackCounterResetTimer = new Timer(attackCounterResetCooldown);
         }
+
+        private void Update()
+        {
+            attackCounterResetTimer.Tick();
+        }
+
+        /// <summary>
+        /// 重置攻击计数器
+        /// </summary>
+        private void ResetAttackCounter() => CurrentAttackCounter = 0;
 
         private void OnEnable()
         {
             // 订阅事件
-            eventHandler.OnFinish += Exit;    
+            eventHandler.OnFinish += Exit;
+            attackCounterResetTimer.OnTimerDone += ResetAttackCounter;
         }
 
         private void OnDisable()
         {
             // 注销事件
             eventHandler.OnFinish -= Exit;
+            attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
         }
     }
 }
