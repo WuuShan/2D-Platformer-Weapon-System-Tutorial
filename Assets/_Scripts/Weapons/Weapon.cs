@@ -30,6 +30,10 @@ namespace Bardent.Weapons
         }
 
         /// <summary>
+        /// 武器开始攻击事件
+        /// </summary>
+        public event Action OnEnter;
+        /// <summary>
         /// 武器完成攻击事件
         /// </summary>
         public event Action OnExit;
@@ -41,7 +45,11 @@ namespace Bardent.Weapons
         /// <summary>
         /// 用于显示玩家攻击动画的物体
         /// </summary>
-        private GameObject baseGameObject;
+        public GameObject BaseGameObject { get; private set; }
+        /// <summary>
+        /// 用于显示武器攻击动画的物体
+        /// </summary>
+        public GameObject WeaponSpriteGameObject { get; private set; }
 
         /// <summary>
         /// 动画事件处理
@@ -69,6 +77,8 @@ namespace Bardent.Weapons
 
             anim.SetBool("active", true);
             anim.SetInteger("counter", CurrentAttackCounter);
+
+            OnEnter?.Invoke();
         }
 
         /// <summary>
@@ -86,10 +96,12 @@ namespace Bardent.Weapons
 
         private void Awake()
         {
-            baseGameObject = transform.Find("Base").gameObject;
-            anim = baseGameObject.GetComponent<Animator>();
+            BaseGameObject = transform.Find("Base").gameObject;
+            WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
 
-            eventHandler = baseGameObject.GetComponent<AnimationEventHandler>();
+            anim = BaseGameObject.GetComponent<Animator>();
+
+            eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
             attackCounterResetTimer = new Timer(attackCounterResetCooldown);
         }
