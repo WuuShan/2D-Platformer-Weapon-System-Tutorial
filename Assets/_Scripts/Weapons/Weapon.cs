@@ -12,9 +12,9 @@ namespace Bardent.Weapons
     public class Weapon : MonoBehaviour
     {
         /// <summary>
-        /// 攻击段数
+        /// 武器数据
         /// </summary>
-        [SerializeField] private int numberOfAttacks;
+        [field:SerializeField]public WeaponDataSO Data { get; private set; }
         /// <summary>
         /// 重置攻击计数器的冷却时间
         /// </summary>
@@ -26,7 +26,7 @@ namespace Bardent.Weapons
         public int CurrentAttackCounter
         {
             get => currentAttackCounter;
-            private set => currentAttackCounter = value >= numberOfAttacks ? 0 : value;
+            private set => currentAttackCounter = value >= Data.NumberOfAttacks ? 0 : value;
         }
 
         /// <summary>

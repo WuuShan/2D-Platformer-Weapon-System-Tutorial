@@ -1,3 +1,4 @@
+using Bardent.Weapons.Components.ComponentData;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,14 +21,14 @@ namespace Bardent.Weapons.Components
         private SpriteRenderer weaponSpriteRenderer;
 
         /// <summary>
-        /// 武器精灵集列表
-        /// </summary>
-        [SerializeField] private WeaponSprites[] weaponSprites;
-
-        /// <summary>
         /// 当前武器精灵索引
         /// </summary>
         private int currentWeaponSpriteIndex;
+
+        /// <summary>
+        /// 武器精灵数据
+        /// </summary>
+        private WeaponSpriteData data;
 
         /// <summary>
         /// 武器攻击处理
@@ -53,7 +54,7 @@ namespace Bardent.Weapons.Components
             }
 
             // 获得当前攻击要使用武器精灵集
-            var currentAttackSprites = weaponSprites[weapon.CurrentAttackCounter].Sprites;
+            var currentAttackSprites = data.AttackData[weapon.CurrentAttackCounter].Sprites;
 
             if (currentWeaponSpriteIndex >= currentAttackSprites.Length)
             {
@@ -72,6 +73,8 @@ namespace Bardent.Weapons.Components
 
             baseSpriteRenderer = transform.Find("Base").GetComponent<SpriteRenderer>();
             weaponSpriteRenderer = transform.Find("WeaponSprite").GetComponent<SpriteRenderer>();
+
+            data = weapon.Data.GetData<WeaponSpriteData>();
 
             // TODO: Fix this when we create weapon data
             // baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
@@ -95,17 +98,5 @@ namespace Bardent.Weapons.Components
 
             weapon.OnEnter -= HandleEnter;
         }
-    }
-
-    /// <summary>
-    /// 武器精灵集
-    /// </summary>
-    [Serializable]
-    public class WeaponSprites
-    {
-        /// <summary>
-        /// 精灵集
-        /// </summary>
-        [field:SerializeField]public Sprite[] Sprites { get; private set; }
     }
 }
