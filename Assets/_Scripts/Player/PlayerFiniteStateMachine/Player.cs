@@ -1,3 +1,4 @@
+using Bardent.CoreSystem;
 using Bardent.Weapons;
 using System.Collections;
 using System.Collections.Generic;
@@ -125,6 +126,9 @@ public class Player : MonoBehaviour
         primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<Weapon>();
         secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<Weapon>();
 
+        primaryWeapon.SetCore(Core);
+        secondaryWeapon.SetCore(Core);
+
         StateMachine = new PlayerStateMachine();
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
@@ -140,8 +144,8 @@ public class Player : MonoBehaviour
         DashState = new PlayerDashState(this, StateMachine, playerData, "inAir");
         CrouchIdleState = new PlayerCrouchIdleState(this, StateMachine, playerData, "crouchIdle");
         CrouchMoveState = new PlayerCrouchMoveState(this, StateMachine, playerData, "crouchMove");
-        PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack",primaryWeapon);
-        SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack",secondaryWeapon);
+        PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon);
+        SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon);
     }
 
     private void Start()
