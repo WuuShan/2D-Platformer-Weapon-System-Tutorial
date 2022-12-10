@@ -2,32 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 核心组件基类
-/// </summary>
-public class CoreComponent : MonoBehaviour, ILogicUpdate
+namespace Bardent.CoreSystem
 {
-    protected Core core;
-
-    public virtual void Init(Core core)
+    /// <summary>
+    /// 核心组件基类
+    /// </summary>
+    public class CoreComponent : MonoBehaviour, ILogicUpdate
     {
-        this.core = core;
-    }
+        protected Core core;
 
-    protected virtual void Awake()
-    {
-        //core = transform.parent.GetComponent<Core>();
+        public virtual void Init(Core core)
+        {
+            this.core = core;
+        }
 
-        //if (core == null)
-        //{
-        //    Debug.LogError("There is no Core on the parent");
-        //}
+        protected virtual void Awake()
+        {
+            //core = transform.parent.GetComponent<Core>();
 
-        //core.AddComponent(this);
-    }
+            //if (core == null)
+            //{
+            //    Debug.LogError("There is no Core on the parent");
+            //}
 
-    public virtual void LogicUpdate()
-    {
+            //core.AddComponent(this);
+        }
 
+        public virtual void LogicUpdate()
+        {
+
+        }
     }
 }

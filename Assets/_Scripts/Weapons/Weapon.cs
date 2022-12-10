@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bardent.Utilities;
+using Bardent.CoreSystem;
 
 namespace Bardent.Weapons
 {
@@ -14,7 +15,7 @@ namespace Bardent.Weapons
         /// <summary>
         /// 武器数据
         /// </summary>
-        [field:SerializeField]public WeaponDataSO Data { get; private set; }
+        [field: SerializeField] public WeaponDataSO Data { get; private set; }
         /// <summary>
         /// 重置攻击计数器的冷却时间
         /// </summary>
@@ -54,7 +55,12 @@ namespace Bardent.Weapons
         /// <summary>
         /// 动画事件处理
         /// </summary>
-        private AnimationEventHandler eventHandler;
+        public AnimationEventHandler EventHandler { get; private set; }
+
+        /// <summary>
+        /// 用来管理各种核心组件
+        /// </summary>
+        public Core Core { get; private set; }
 
         /// <summary>
         /// 当前攻击计数器
@@ -82,6 +88,15 @@ namespace Bardent.Weapons
         }
 
         /// <summary>
+        /// 设置核心组件管理器
+        /// </summary>
+        /// <param name="core">核心</param>
+        public void SetCore(Core core)
+        {
+            Core = core;
+        }
+
+        /// <summary>
         /// 广播武器完成攻击事件
         /// </summary>
         private void Exit()
@@ -101,7 +116,7 @@ namespace Bardent.Weapons
 
             anim = BaseGameObject.GetComponent<Animator>();
 
-            eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
+            EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
             attackCounterResetTimer = new Timer(attackCounterResetCooldown);
         }
@@ -119,14 +134,14 @@ namespace Bardent.Weapons
         private void OnEnable()
         {
             // 订阅事件
-            eventHandler.OnFinish += Exit;
+            EventHandler.OnFinish += Exit;
             attackCounterResetTimer.OnTimerDone += ResetAttackCounter;
         }
 
         private void OnDisable()
         {
             // 注销事件
-            eventHandler.OnFinish -= Exit;
+            EventHandler.OnFinish -= Exit;
             attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
         }
     }
