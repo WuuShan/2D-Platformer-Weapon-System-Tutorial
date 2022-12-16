@@ -1,4 +1,4 @@
-using Bardent.Weapons.Components.ComponentData;
+using Bardent.Weapons.Components;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;

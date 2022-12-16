@@ -1,17 +1,13 @@
-﻿using Bardent.Weapons.Components.ComponentData.AttackData;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Bardent.Weapons.Components.ComponentData
+namespace Bardent.Weapons.Components
 {
     /// <summary>
     /// 移动数据
     /// </summary>
-    public class MovementData : ComponentData
+    public class MovementData : ComponentData<AttackMovement>
     {
-        /// <summary>
-        /// 攻击移动数据
-        /// </summary>
-        [field: SerializeField] public AttackMovement[] AttackData { get; private set; }
+
 
     }
 }

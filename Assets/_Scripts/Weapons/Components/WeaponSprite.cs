@@ -1,4 +1,4 @@
-using Bardent.Weapons.Components.ComponentData;
+using Bardent.Weapons.Components;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ namespace Bardent.Weapons.Components
     /// <summary>
     /// 武器精灵
     /// </summary>
-    public class WeaponSprite : WeaponComponent
+    public class WeaponSprite : WeaponComponent<WeaponSpriteData, AttackSprites>
     {
         /// <summary>
         /// 玩家精灵渲染器
@@ -24,11 +24,6 @@ namespace Bardent.Weapons.Components
         /// 当前武器精灵索引
         /// </summary>
         private int currentWeaponSpriteIndex;
-
-        /// <summary>
-        /// 武器精灵数据
-        /// </summary>
-        private WeaponSpriteData data;
 
         /// <summary>
         /// 武器攻击处理
@@ -54,7 +49,7 @@ namespace Bardent.Weapons.Components
             }
 
             // 获得当前攻击要使用武器精灵集
-            var currentAttackSprites = data.AttackData[weapon.CurrentAttackCounter].Sprites;
+            var currentAttackSprites = currentAttackData.Sprites;
 
             if (currentWeaponSpriteIndex >= currentAttackSprites.Length)
             {

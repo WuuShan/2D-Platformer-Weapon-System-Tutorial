@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Bardent.Weapons.Components.ComponentData.AttackData
+namespace Bardent.Weapons.Components
 {
     /// <summary>
     /// 攻击移动
     /// </summary>
     [Serializable]
-    public class AttackMovement
+    public class AttackMovement : AttackData
     {
         /// <summary>
         /// 移动方向

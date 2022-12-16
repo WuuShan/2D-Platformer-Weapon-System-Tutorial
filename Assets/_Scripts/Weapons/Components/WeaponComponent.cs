@@ -66,4 +66,35 @@ namespace Bardent.Weapons.Components
             weapon.OnExit -= HandleExit;
         }
     }
+
+    /// <summary>
+    /// 武器组件
+    /// </summary>
+    /// <typeparam name="T1">组件相关的数据</typeparam>
+    /// <typeparam name="T2">攻击相关的数据</typeparam>
+    public abstract class WeaponComponent<T1, T2> : WeaponComponent where T1 : ComponentData<T2> where T2 : AttackData
+    {
+        /// <summary>
+        /// 组件数据
+        /// </summary>
+        protected T1 data;
+        /// <summary>
+        /// 当前攻击数据
+        /// </summary>
+        protected T2 currentAttackData;
+
+        protected override void HandleEnter()
+        {
+            base.HandleEnter();
+
+            currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            data = weapon.Data.GetData<T1>();
+        }
+    }
 }
