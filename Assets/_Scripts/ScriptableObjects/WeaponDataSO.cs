@@ -35,15 +35,15 @@ namespace Bardent.Weapons
         }
 
         /// <summary>
-        /// 添加一个武器精灵数据到组件数据列表
+        /// 添加一个组件数据到列表
         /// </summary>
-        [ContextMenu("Add Sprite Data")]
-        private void AddSpriteData() => ComponentData.Add(new WeaponSpriteData());
+        /// <param name="data">组件数据</param>
+        public void AddData(ComponentData data)
+        {
+            // 将组件数据列表与组件数据进行类型比较 如果相等则有重复组件数据 跳出
+            if (ComponentData.FirstOrDefault(t => t.GetType() == data.GetType()) != null) return;
 
-        /// <summary>
-        /// 添加一个武器移动数据到组件数据列表
-        /// </summary>
-        [ContextMenu("Add Movement Data")]
-        private void AddMovementData() => ComponentData.Add(new MovementData());
+            ComponentData.Add(data);
+        }
     }
 }
