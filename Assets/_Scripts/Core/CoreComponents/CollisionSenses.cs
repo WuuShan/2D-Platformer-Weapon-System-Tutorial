@@ -82,7 +82,6 @@ namespace Bardent.CoreSystem
 
         #endregion
 
-
         #region Check Functions 检查函数
 
         /// <summary>

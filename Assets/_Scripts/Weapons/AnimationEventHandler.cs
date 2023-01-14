@@ -22,6 +22,10 @@ namespace Bardent.Weapons
         /// 在角色停止攻击移动时触发的事件
         /// </summary>
         public event Action OnStopMovement;
+        /// <summary>
+        /// 在角色执行攻击动作时触发的事件
+        /// </summary>
+        public event Action OnAttackAction;
 
         /// <summary>
         /// 广播动画结束后触发的事件
@@ -35,6 +39,9 @@ namespace Bardent.Weapons
         /// 广播角色停止攻击移动时触发的事件
         /// </summary>
         private void StopMovementTrigger() => OnStopMovement?.Invoke();
-
+        /// <summary>
+        /// 广播角色执行攻击动作时触发的事件
+        /// </summary>
+        private void AttackActionTrigger() => OnAttackAction?.Invoke();
     }
 }
