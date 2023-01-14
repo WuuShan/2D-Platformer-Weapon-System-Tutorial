@@ -16,6 +16,7 @@ MonoBehaviour:
   <ComponentData>k__BackingField:
   - rid: 5316470245202329600
   - rid: 2257087576635080705
+  - rid: 6433032810789601280
   references:
     version: 2
     RefIds:
@@ -51,3 +52,31 @@ MonoBehaviour:
           - {fileID: 351680618, guid: 789164eea9b680940b2272ae12f2d2cf, type: 3}
           - {fileID: 793088237, guid: 789164eea9b680940b2272ae12f2d2cf, type: 3}
           - {fileID: -275170589, guid: 789164eea9b680940b2272ae12f2d2cf, type: 3}
+    - rid: 6433032810789601280
+      type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        <AttackData>k__BackingField:
+        - Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0.1
+            y: -0.9
+            width: 2
+            height: 1.5
+        - Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0.1
+            y: -0.9
+            width: 2
+            height: 1.5
+        - Debug: 1
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: -1
+            width: 1.6
+            height: 2.5
+        <DetectableLayers>k__BackingField:
+          serializedVersion: 2
+          m_Bits: 128

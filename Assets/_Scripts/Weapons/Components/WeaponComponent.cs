@@ -38,6 +38,11 @@ namespace Bardent.Weapons.Components
             eventHandler = GetComponentInChildren<AnimationEventHandler>();
         }
 
+        protected virtual void Start()
+        {
+
+        }
+
         /// <summary>
         /// 武器开始攻击
         /// </summary>
