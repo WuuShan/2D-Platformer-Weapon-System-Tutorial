@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Bardent.CoreSystem
 {
     /// <summary>
-    /// 方便调用玩家核心组件
+    /// 方便调用核心组件
     /// </summary>
     /// <typeparam name="T">对应的核心组件</typeparam>
     public class CoreComp<T> where T : CoreComponent
@@ -19,10 +19,14 @@ namespace Bardent.CoreSystem
         private T comp;
 
         /// <summary>
-        /// 核心组件
+        /// 获取对应的核心组件。
         /// </summary>
         public T Comp => comp ? comp : core.GetCoreComponent(ref comp);
 
+        /// <summary>
+        /// 初始化核心
+        /// </summary>
+        /// <param name="core">核心</param>
         public CoreComp(Core core)
         {
             if (core == null)

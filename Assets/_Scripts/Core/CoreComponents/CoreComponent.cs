@@ -5,12 +5,19 @@ using UnityEngine;
 namespace Bardent.CoreSystem
 {
     /// <summary>
-    /// 核心组件基类
+    /// 核心组件基类，此类提供一个基础的组件结构，其他组件继承此类。
     /// </summary>
     public class CoreComponent : MonoBehaviour, ILogicUpdate
     {
+        /// <summary>
+        /// 游戏对象上的核心组件
+        /// </summary>
         protected Core core;
 
+        /// <summary>
+        /// 初始化核心组件
+        /// </summary>
+        /// <param name="core">核心组件</param>
         public virtual void Init(Core core)
         {
             this.core = core;
@@ -18,19 +25,18 @@ namespace Bardent.CoreSystem
 
         protected virtual void Awake()
         {
-            //core = transform.parent.GetComponent<Core>();
+            // 获取父物体上的核心组件
+            core = transform.parent.GetComponent<Core>();
 
-            //if (core == null)
-            //{
-            //    Debug.LogError("There is no Core on the parent");
-            //}
+            if (core == null)
+            {
+                Debug.LogError("There is no Core on the parent");
+            }
 
-            //core.AddComponent(this);
+            // 添加组件到核心组件中
+            core.AddComponent(this);
         }
 
-        public virtual void LogicUpdate()
-        {
-
-        }
+        public virtual void LogicUpdate() { }
     }
 }

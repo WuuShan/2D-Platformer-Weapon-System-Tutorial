@@ -16,6 +16,9 @@ namespace Bardent.Weapons
 
         private WeaponDataSO dataSO;
 
+        private bool showForceUpdateButtons;
+        private bool showAddComponentButtons;
+
         private void OnEnable()
         {
             // 获取正在编辑的 WeaponDataSO 对象
@@ -27,18 +30,54 @@ namespace Bardent.Weapons
             // 为 WeaponDataSO 对象绘制默认的 Inspector 视图
             base.OnInspectorGUI();
 
-            // 对 dataCompTypes 列表中的每个 ComponentData 类型，在 Inspector 视图中添加一个按钮
-            foreach (var dataCompType in dataCompTypes)
+            if (GUILayout.Button("Set Number of Attacks"))
             {
-                if (GUILayout.Button(dataCompType.Name))
+                foreach (var item in dataSO.ComponentData)
                 {
-                    // 创建 ComponentData 类型的实例
-                    var comp = Activator.CreateInstance(dataCompType) as ComponentData;
+                    item.InitializeAttackData(dataSO.NumberOfAttacks);
+                }
+            }
 
-                    if (comp == null) return;
+            showAddComponentButtons = EditorGUILayout.Foldout(showAddComponentButtons, "Add Components");
 
-                    // 将 ComponentData 添加到 WeaponDataSO 对象中
-                    dataSO.AddData(comp);
+            if (showAddComponentButtons)
+            {
+                // 对 dataCompTypes 列表中的每个 ComponentData 类型，在 Inspector 视图中添加一个按钮
+                foreach (var dataCompType in dataCompTypes)
+                {
+                    if (GUILayout.Button(dataCompType.Name))
+                    {
+                        // 创建 ComponentData 类型的实例
+                        var comp = Activator.CreateInstance(dataCompType) as ComponentData;
+
+                        if (comp == null) return;
+
+                        comp.InitializeAttackData(dataSO.NumberOfAttacks);
+
+                        // 将 ComponentData 添加到 WeaponDataSO 对象中
+                        dataSO.AddData(comp);
+                    }
+                }
+            }
+
+            showForceUpdateButtons = EditorGUILayout.Foldout(showForceUpdateButtons, "Force Update Buttons");
+
+            if (showForceUpdateButtons)
+            {
+                if (GUILayout.Button("Force Update Component Names"))
+                {
+                    foreach (var item in dataSO.ComponentData)
+                    {
+                        item.SetComponentNmae();
+                    }
+                }
+
+                if (GUILayout.Button("Force Update Attack Names"))
+                {
+                    foreach (var item in dataSO.ComponentData)
+                    {
+                        item.SetAttackDataNames();
+                    }
                 }
             }
         }

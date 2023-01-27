@@ -22513,6 +22513,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c65726b779c914eae43ef3f1a20920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &613018475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613018470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ecb7b1e80955140a15735b76f17204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &614393107
 GameObject:
   m_ObjectHideFlags: 0
@@ -23227,6 +23239,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c65726b779c914eae43ef3f1a20920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &772990784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745470158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ecb7b1e80955140a15735b76f17204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &775952184
 GameObject:
   m_ObjectHideFlags: 0
@@ -23687,6 +23711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258678458}
   - component: {fileID: 1258678460}
+  - component: {fileID: 1258678461}
   - component: {fileID: 1258678459}
   m_Layer: 7
   m_Name: Combat
@@ -23748,7 +23773,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf1478ebdaa0834ca8ae13b72dff37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxKnockbackTime: 0.2
+  maxKnockBackTime: 0.2
+--- !u!114 &1258678461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258678457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410783447005a2046a910cdb95debc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   damageParticles: {fileID: 6500637038234460924, guid: 163ad5a4602b1594b86a8179a6dcd6c4, type: 3}
 --- !u!1 &1278608631
 GameObject:
@@ -24159,6 +24196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1464582469}
   - component: {fileID: 1464582471}
+  - component: {fileID: 1464582472}
   - component: {fileID: 1464582470}
   m_Layer: 9
   m_Name: Combat
@@ -24220,7 +24258,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf1478ebdaa0834ca8ae13b72dff37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxKnockbackTime: 0.2
+  maxKnockBackTime: 0.2
+--- !u!114 &1464582472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464582468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410783447005a2046a910cdb95debc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   damageParticles: {fileID: 6500637038234460924, guid: 163ad5a4602b1594b86a8179a6dcd6c4, type: 3}
 --- !u!1 &1470167695
 GameObject:
@@ -24276,6 +24326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1493931975}
   - component: {fileID: 1493931976}
+  - component: {fileID: 1493931978}
   - component: {fileID: 1493931977}
   m_Layer: 7
   m_Name: Combat
@@ -24311,8 +24362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf1478ebdaa0834ca8ae13b72dff37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxKnockbackTime: 0.2
-  damageParticles: {fileID: 6500637038234460924, guid: 163ad5a4602b1594b86a8179a6dcd6c4, type: 3}
+  maxKnockBackTime: 0.2
 --- !u!61 &1493931977
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24339,6 +24389,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9014435, y: 0.9814129}
   m_EdgeRadius: 0
+--- !u!114 &1493931978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493931974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410783447005a2046a910cdb95debc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageParticles: {fileID: 6500637038234460924, guid: 163ad5a4602b1594b86a8179a6dcd6c4, type: 3}
 --- !u!1 &1500013060
 GameObject:
   m_ObjectHideFlags: 0

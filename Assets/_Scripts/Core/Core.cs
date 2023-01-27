@@ -10,6 +10,9 @@ namespace Bardent.CoreSystem
     /// </summary>
     public class Core : MonoBehaviour
     {
+        /// <summary>
+        /// 存储所有核心组件
+        /// </summary>
         private readonly List<CoreComponent> CoreComponents = new List<CoreComponent>();
 
         private void Awake()
@@ -19,7 +22,7 @@ namespace Bardent.CoreSystem
             var comps = GetComponentsInChildren<CoreComponent>();
 
             // Add componets found to list. Use old function to avoid duplicates.
-            // 将找到的组件添加到列表中。 使用旧功能避免重复。
+            // 将找到的组件添加到列表中。使用旧功能避免重复。
             foreach (var component in comps)
             {
                 AddComponent(component);
@@ -34,7 +37,7 @@ namespace Bardent.CoreSystem
         }
 
         /// <summary>
-        /// 逻辑更新
+        /// 用于逻辑更新，遍历所有的核心组件并执行逻辑更新
         /// </summary>
         public void LogicUpdate()
         {
@@ -60,7 +63,7 @@ namespace Bardent.CoreSystem
         /// 根据组件类型获得核心组件
         /// </summary>
         /// <typeparam name="T">组件类型</typeparam>
-        /// <returns></returns>
+        /// <returns>如果有返回组件，没有返回null</returns>
         public T GetCoreComponent<T>() where T : CoreComponent
         {
             var comp = CoreComponents.OfType<T>().FirstOrDefault();    // 返回 T 类型集合中的第一个组件，若是长度为 0 则返回 null
@@ -74,11 +77,11 @@ namespace Bardent.CoreSystem
         }
 
         /// <summary>
-        /// 根据组件获得核心组件
+        /// 根据给定的组件类型，获取该类型的核心组件并将其赋值给给定的组件变量。
         /// </summary>
-        /// <typeparam name="T">组件类型</typeparam>
-        /// <param name="value">组件</param>
-        /// <returns></returns>
+        /// <typeparam name="T">组件类型，要求该类型必须继承自CoreComponent</typeparam>
+        /// <param name="value">组件变量，获取到的核心组件会被赋值给该变量。</param>
+        /// <returns>返回获取到的核心组件</returns>
         public T GetCoreComponent<T>(ref T value) where T : CoreComponent
         {
             value = GetCoreComponent<T>();
