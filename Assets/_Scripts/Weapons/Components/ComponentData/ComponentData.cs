@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Bardent.Weapons.Components
 {
     /// <summary>
-    /// 组件数据
+    /// 与武器组件相关的数据
     /// </summary>
     [Serializable]
     public class ComponentData
@@ -20,13 +20,20 @@ namespace Bardent.Weapons.Components
 
         public void SetComponentNmae() => name = GetType().Name;
 
+        /// <summary>
+        /// 设置攻击数据的名称
+        /// </summary>
         public virtual void SetAttackDataNames() { }
 
+        /// <summary>
+        /// 初始化攻击数据
+        /// </summary>
+        /// <param name="numberOfAttacks">攻击数量</param>
         public virtual void InitializeAttackData(int numberOfAttacks) { }
     }
 
     /// <summary>
-    /// 组件数据
+    /// 与武器组件相关的数据
     /// </summary>
     /// <typeparam name="T">攻击相关的数据</typeparam>
     [Serializable]

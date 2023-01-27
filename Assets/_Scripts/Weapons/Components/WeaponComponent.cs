@@ -75,7 +75,7 @@ namespace Bardent.Weapons.Components
     /// <summary>
     /// 武器组件
     /// </summary>
-    /// <typeparam name="T1">组件相关的数据</typeparam>
+    /// <typeparam name="T1">武器组件相关的数据</typeparam>
     /// <typeparam name="T2">攻击相关的数据</typeparam>
     public abstract class WeaponComponent<T1, T2> : WeaponComponent where T1 : ComponentData<T2> where T2 : AttackData
     {

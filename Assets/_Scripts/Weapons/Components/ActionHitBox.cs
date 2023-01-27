@@ -13,7 +13,7 @@ namespace Bardent.Weapons.Components
         /// <summary>
         /// 检测到的碰撞体事件
         /// </summary>
-        private event Action<Collider2D[]> OnDetectedCollider2D;
+        public event Action<Collider2D[]> OnDetectedCollider2D;
 
         /// <summary>
         /// 玩家移动核心组件
@@ -48,11 +48,6 @@ namespace Bardent.Weapons.Components
 
             // 广播检测到的碰撞体事件
             OnDetectedCollider2D?.Invoke(detected);
-
-            foreach (var item in detected)
-            {
-                Debug.Log(item.name);
-            }
         }
 
         protected override void Start()
