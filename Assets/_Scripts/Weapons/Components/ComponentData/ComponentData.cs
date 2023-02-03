@@ -13,6 +13,8 @@ namespace Bardent.Weapons.Components
     {
         [SerializeField, HideInInspector] private string name;
 
+        public Type ComponentDependency { get; protected set; }
+
         public ComponentData()
         {
             SetComponentNmae();
@@ -28,7 +30,7 @@ namespace Bardent.Weapons.Components
         /// <summary>
         /// 初始化攻击数据
         /// </summary>
-        /// <param name="numberOfAttacks">攻击数量</param>
+        /// <param name="numberOfAttacks">攻击数据的数量</param>
         public virtual void InitializeAttackData(int numberOfAttacks) { }
     }
 

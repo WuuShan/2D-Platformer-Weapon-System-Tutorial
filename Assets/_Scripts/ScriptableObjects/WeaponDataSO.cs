@@ -1,4 +1,5 @@
 using Bardent.Weapons.Components;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,11 @@ namespace Bardent.Weapons
             // 使用LINQ的OfType方法，获取所有指定类型的数据
             // 然后使用FirstOrDefault方法，返回第一个指定类型的数据
             return ComponentData.OfType<T>().FirstOrDefault();
+        }
+
+        public List<Type> GetAllDependencies()
+        {
+            return ComponentData.Select(component => component.ComponentDependency).ToList();
         }
 
         /// <summary>

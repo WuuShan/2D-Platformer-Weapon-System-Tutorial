@@ -9,6 +9,9 @@ namespace Bardent.Weapons.Components
     /// </summary>
     public class DamageData : ComponentData<AttackDamage>
     {
-
+        public DamageData()
+        {
+            ComponentDependency = typeof(Damage);
+        }
     }
 }
