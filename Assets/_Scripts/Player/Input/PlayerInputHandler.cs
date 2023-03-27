@@ -16,38 +16,47 @@ public class PlayerInputHandler : MonoBehaviour
     /// 原始移动输入
     /// </summary>
     public Vector2 RawMovementInput { get; private set; }
+
     /// <summary>
     /// 原始冲刺方向输入
     /// </summary>
     public Vector2 RawDashDirectionInput { get; private set; }
+
     /// <summary>
     /// 冲刺方向输入
     /// </summary>
     public Vector2Int DashDirectionInput { get; private set; }
+
     /// <summary>
     /// 标准化输入X
     /// </summary>
     public int NormInputX { get; private set; }
+
     /// <summary>
     /// 标准化输入Y
     /// </summary>
     public int NormInputY { get; private set; }
+
     /// <summary>
     /// 跳跃输入
     /// </summary>
     public bool JumpInput { get; private set; }
+
     /// <summary>
     /// 跳跃输入停止
     /// </summary>
     public bool JumpInputStop { get; private set; }
+
     /// <summary>
     /// 抓取输入
     /// </summary>
     public bool GrabInput { get; private set; }
+
     /// <summary>
     /// 冲刺输入
     /// </summary>
     public bool DashInput { get; private set; }
+
     /// <summary>
     /// 冲刺输入停止
     /// </summary>
@@ -67,6 +76,7 @@ public class PlayerInputHandler : MonoBehaviour
     /// 跳跃输入开始时间
     /// </summary>
     private float jumpInputStartTime;
+
     /// <summary>
     /// 冲刺输入开始时间
     /// </summary>
@@ -202,12 +212,14 @@ public class PlayerInputHandler : MonoBehaviour
     /// 注册冲刺方向输入
     /// </summary>
     /// <param name="context"></param>
-    public void OnDashIDirectionnput(InputAction.CallbackContext context)
+    public void OnDashIDirectionInput(InputAction.CallbackContext context)
     {
         RawDashDirectionInput = context.ReadValue<Vector2>();
 
+        // if (playerInput.currentControlScheme == "Keyboard")
         if (playerInput.currentControlScheme == "Keyboard")
         {
+            Debug.Log(1);
             RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
         }
 
@@ -256,6 +268,7 @@ public enum CombatInputs
     /// 主武器
     /// </summary>
     primary,
+
     /// <summary>
     /// 副武器
     /// </summary>

@@ -68,12 +68,14 @@ namespace Bardent.CoreSystem
         {
             var comp = CoreComponents.OfType<T>().FirstOrDefault();    // 返回 T 类型集合中的第一个组件，若是长度为 0 则返回 null
 
-            if (comp == null)
-            {
-                Debug.LogWarning($"{typeof(T)} not found on {transform.parent.name}");
-            }
+            if (comp) return comp;
 
-            return comp;
+            comp = GetComponentInChildren<T>();
+
+            if (comp) return comp;
+
+            Debug.LogWarning($"{typeof(T)} not found on {transform.parent.name}");
+            return null;
         }
 
         /// <summary>

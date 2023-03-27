@@ -14,10 +14,12 @@ public class PlayerState
     /// 玩家
     /// </summary>
     protected Player player;
+
     /// <summary>
     /// 状态机
     /// </summary>
     protected PlayerStateMachine stateMachine;
+
     /// <summary>
     /// 玩家数据
     /// </summary>
@@ -27,13 +29,14 @@ public class PlayerState
     /// 动画是否结束
     /// </summary>
     protected bool isAnimationFinished;
+
     /// <summary>
     /// 是否在退出状态
     /// </summary>
     protected bool isExitingState;
 
     /// <summary>
-    /// 开始时间
+    /// 进入状态的时间
     /// </summary>
     protected float startTime;
 
@@ -75,7 +78,8 @@ public class PlayerState
     /// <summary>
     /// 每帧执行一次
     /// </summary>
-    public virtual void LogicUpdate() { }
+    public virtual void LogicUpdate()
+    { }
 
     /// <summary>
     /// 固定帧率执行一次
@@ -88,12 +92,14 @@ public class PlayerState
     /// <summary>
     /// 检查各种物理效果
     /// </summary>
-    public virtual void DoChecks() { }
+    public virtual void DoChecks()
+    { }
 
     /// <summary>
     /// 动画事件触发
     /// </summary>
-    public virtual void AnimationTrigger() { }
+    public virtual void AnimationTrigger()
+    { }
 
     /// <summary>
     /// 动画结束事件触发

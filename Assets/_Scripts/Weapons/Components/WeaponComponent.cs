@@ -10,40 +10,36 @@ namespace Bardent.Weapons.Components
     /// </summary>
     public abstract class WeaponComponent : MonoBehaviour
     {
-        /// <summary>
-        /// 武器
-        /// </summary>
-        protected Weapon weapon;
-
         // TODO: Fix this when finishing weapon data
         // protected AnimationEventHandler EventHandler => weapon.EventHandler;
         /// <summary>
         /// 用于处理动画事件
         /// </summary>
         protected AnimationEventHandler eventHandler;
-        /// <summary>
-        /// 核心组件管理器
-        /// </summary>
-        protected Core Core => weapon.Core;
 
         /// <summary>
         /// 攻击是否激活
         /// </summary>
         protected bool isAttackActive;
 
-        public virtual void Init() { }
+        /// <summary>
+        /// 武器
+        /// </summary>
+        protected Weapon weapon;
+
+        /// <summary>
+        /// 核心组件管理器
+        /// </summary>
+        protected Core Core => weapon.Core;
+
+        public virtual void Init()
+        { }
 
         protected virtual void Awake()
         {
             weapon = GetComponent<Weapon>();
 
             eventHandler = GetComponentInChildren<AnimationEventHandler>();
-        }
-
-        protected virtual void Start()
-        {
-            weapon.OnEnter += HandleEnter;
-            weapon.OnExit += HandleExit;
         }
 
         /// <summary>
@@ -67,6 +63,12 @@ namespace Bardent.Weapons.Components
             weapon.OnEnter -= HandleEnter;
             weapon.OnExit -= HandleExit;
         }
+
+        protected virtual void Start()
+        {
+            weapon.OnEnter += HandleEnter;
+            weapon.OnExit += HandleExit;
+        }
     }
 
     /// <summary>
@@ -77,26 +79,27 @@ namespace Bardent.Weapons.Components
     public abstract class WeaponComponent<T1, T2> : WeaponComponent where T1 : ComponentData<T2> where T2 : AttackData
     {
         /// <summary>
-        /// 组件数据
-        /// </summary>
-        protected T1 data;
-        /// <summary>
         /// 当前攻击数据
         /// </summary>
         protected T2 currentAttackData;
 
-        protected override void HandleEnter()
-        {
-            base.HandleEnter();
-
-            currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
-        }
+        /// <summary>
+        /// 组件数据
+        /// </summary>
+        protected T1 data;
 
         public override void Init()
         {
             base.Init();
 
             data = weapon.Data.GetData<T1>();
+        }
+
+        protected override void HandleEnter()
+        {
+            base.HandleEnter();
+
+            currentAttackData = data.AttackData[weapon.CurrentAttackCounter];
         }
     }
 }

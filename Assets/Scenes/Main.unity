@@ -260,7 +260,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &96596811
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -277,7 +277,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &96596812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22187,7 +22187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.438, y: -5.997, z: -10}
+  m_LocalPosition: {x: -5.22, y: -5.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22329,7 +22329,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!95 &555675938
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -22346,7 +22346,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!50 &555675939
 Rigidbody2D:
   serializedVersion: 4
@@ -22827,7 +22827,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 678910416}
         m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: OnDashIDirectionnput
+        m_MethodName: OnDashIDirectionInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22884,7 +22884,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678910415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.438, y: -5.997, z: 0}
+  m_LocalPosition: {x: -5.22, y: -5.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22944,7 +22944,7 @@ Rigidbody2D:
   m_Constraints: 4
 --- !u!95 &678910421
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -22961,7 +22961,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!212 &678910422
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23815,7 +23815,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!95 &1374094688
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -23832,7 +23832,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!50 &1374094689
 Rigidbody2D:
   serializedVersion: 4
@@ -34503,7 +34503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018720820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.438, y: -5.997, z: -10}
+  m_LocalPosition: {x: -5.22, y: -5.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34540,7 +34540,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

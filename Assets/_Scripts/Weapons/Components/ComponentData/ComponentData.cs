@@ -9,18 +9,33 @@ namespace Bardent.Weapons.Components
     /// 与武器组件相关的数据
     /// </summary>
     [Serializable]
-    public class ComponentData
+    public abstract class ComponentData
     {
+        /// <summary>
+        /// 组件数据名称
+        /// </summary>
         [SerializeField, HideInInspector] private string name;
 
+        /// <summary>
+        /// 组件数据的依赖组件
+        /// </summary>
         public Type ComponentDependency { get; protected set; }
 
         public ComponentData()
         {
             SetComponentNmae();
+            SetComponentDependency();
         }
 
+        /// <summary>
+        /// 设置组件名称
+        /// </summary>
         public void SetComponentNmae() => name = GetType().Name;
+
+        /// <summary>
+        /// 设置组件依赖
+        /// </summary>
+        protected abstract void SetComponentDependency();
 
         /// <summary>
         /// 设置攻击数据的名称
@@ -39,12 +54,15 @@ namespace Bardent.Weapons.Components
     /// </summary>
     /// <typeparam name="T">攻击相关的数据</typeparam>
     [Serializable]
-    public class ComponentData<T> : ComponentData where T : AttackData
+    public abstract class ComponentData<T> : ComponentData where T : AttackData
     {
+        /// <summary>
+        /// 攻击数据
+        /// </summary>
         [SerializeField] private T[] attackData;
 
         /// <summary>
-        /// 攻击数据
+        /// 对应组件的攻击数据
         /// </summary>
         public T[] AttackData { get => attackData; private set => attackData = value; }
 

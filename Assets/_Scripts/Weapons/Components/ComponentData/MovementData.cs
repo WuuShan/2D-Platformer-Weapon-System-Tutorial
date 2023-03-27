@@ -7,7 +7,7 @@ namespace Bardent.Weapons.Components
     /// </summary>
     public class MovementData : ComponentData<AttackMovement>
     {
-        public MovementData()
+        protected override void SetComponentDependency()
         {
             ComponentDependency = typeof(Movement);
         }
