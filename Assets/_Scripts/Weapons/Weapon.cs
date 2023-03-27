@@ -13,13 +13,13 @@ namespace Bardent.Weapons
     public class Weapon : MonoBehaviour
     {
         /// <summary>
-        /// 武器数据
-        /// </summary>
-        [field: SerializeField] public WeaponDataSO Data { get; private set; }
-        /// <summary>
         /// 重置攻击计数器的冷却时间
         /// </summary>
         [SerializeField] private float attackCounterResetCooldown;
+        /// <summary>
+        /// 武器数据
+        /// </summary>
+        public WeaponDataSO Data { get; private set; }
 
         /// <summary>
         /// 当前武器攻击计数器
@@ -94,6 +94,11 @@ namespace Bardent.Weapons
         public void SetCore(Core core)
         {
             Core = core;
+        }
+
+        public void SetData(WeaponDataSO data)
+        {
+            Data = data;
         }
 
         /// <summary>

@@ -5,13 +5,13 @@ using UnityEngine;
 namespace Bardent.Weapons.Components
 {
     /// <summary>
-    /// 伤害组件数据
+    /// 击退组件数据
     /// </summary>
-    public class DamageData : ComponentData<AttackDamage>
+    public class KnockBackData : ComponentData<AttackKnockBack>
     {
         protected override void SetComponentDependency()
         {
-            ComponentDependency = typeof(Damage);
+            ComponentDependency = typeof(KnockBack);
         }
     }
 }

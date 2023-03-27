@@ -5,29 +5,31 @@ using UnityEngine;
 namespace Bardent.Weapons.Components
 {
     /// <summary>
-    /// 处理伤害相关
+    /// 武器的击退组件
     /// </summary>
-    public class Damage : WeaponComponent<DamageData, AttackDamage>
+    public class KnockBack : WeaponComponent<KnockBackData, AttackKnockBack>
     {
         /// <summary>
-        /// 用于检测碰撞的组件
+        /// 武器命中框
         /// </summary>
         private ActionHitBox hitBox;
 
         /// <summary>
-        /// 处理检测到的碰撞体
+        /// 刚体移动组件
         /// </summary>
-        /// <param name="colliders">碰撞体数组</param>
+        private CoreSystem.Movement movement;
+
+        /// <summary>
+        /// 处理检测到的2D碰撞体
+        /// </summary>
+        /// <param name="colliders">2D碰撞体</param>
         private void HandleDetectCollider2D(Collider2D[] colliders)
         {
-            // 遍历碰撞体数组
             foreach (var item in colliders)
             {
-                // 如果碰撞体上有IDamageable接口
-                if (item.TryGetComponent(out IDamageable damageable))
+                if (item.TryGetComponent(out IKnockBackable knockBackable))
                 {
-                    // 调用伤害方法
-                    damageable.Damage(currentAttackData.Amount);
+                    knockBackable.KnockBack(currentAttackData.Angle, currentAttackData.Strength, movement.FacingDirection);
                 }
             }
         }
@@ -39,6 +41,8 @@ namespace Bardent.Weapons.Components
             hitBox = GetComponent<ActionHitBox>();
 
             hitBox.OnDetectedCollider2D += HandleDetectCollider2D;
+
+            movement = Core.GetCoreComponent<CoreSystem.Movement>();
         }
 
         protected override void OnDestroy()

@@ -40,18 +40,18 @@ namespace Bardent.Weapons.Components
             CoreMovement.SetVelocityZero();
         }
 
-        protected override void OnEnable()
+        protected override void Start()
         {
-            base.OnEnable();
+            base.Start();
 
             // 注册攻击移动事件处理函数
             eventHandler.OnStartMovement += HandleStartMovement;
             eventHandler.OnStopMovement += HandleStopMovement;
         }
 
-        protected override void OnDisable()
+        protected override void OnDestroy()
         {
-            base.OnDisable();
+            base.OnDestroy();
 
             // 注消攻击移动事件处理函数
             eventHandler.OnStartMovement -= HandleStartMovement;
