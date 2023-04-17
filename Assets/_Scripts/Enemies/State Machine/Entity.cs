@@ -73,9 +73,13 @@ public class Entity : MonoBehaviour
     /// </summary>
     protected bool isDead;
 
+    protected Stats stats;
+
     public virtual void Awake()
     {
         Core = GetComponentInChildren<Core>();
+
+        stats = Core.GetCoreComponent<Stats>();
 
         currentHealth = entityData.maxHealth;
         currentStunResistance = entityData.stunResistance;

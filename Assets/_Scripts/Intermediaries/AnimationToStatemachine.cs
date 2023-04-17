@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 状态机的动画
+/// 状态机的动画事件
 /// </summary>
 public class AnimationToStatemachine : MonoBehaviour
 {

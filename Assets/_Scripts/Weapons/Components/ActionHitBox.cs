@@ -18,7 +18,7 @@ namespace Bardent.Weapons.Components
         /// <summary>
         /// 玩家移动核心组件
         /// </summary>
-        private CoreComp<CoreSystem.Movement> movement;
+        private CoreSystem.Movement movement;
 
         /// <summary>
         /// 判定框偏移
@@ -37,7 +37,7 @@ namespace Bardent.Weapons.Components
         {
             // 设置判定框的位置
             offset.Set(
-                transform.position.x + (currentAttackData.HitBox.center.x * movement.Comp.FacingDirection),
+                transform.position.x + (currentAttackData.HitBox.center.x * movement.FacingDirection),
                 transform.position.y + currentAttackData.HitBox.center.y
                 );
 
@@ -54,7 +54,7 @@ namespace Bardent.Weapons.Components
         {
             base.Start();
 
-            movement = new CoreComp<CoreSystem.Movement>(Core);
+            movement = Core.GetCoreComponent<CoreSystem.Movement>();
             eventHandler.OnAttackAction += HandleAttackAction;
         }
 

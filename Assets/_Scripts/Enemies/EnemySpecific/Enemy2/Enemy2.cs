@@ -43,11 +43,23 @@ public class Enemy2 : Entity
         deadState = new E2_DeadState(this, stateMachine, "dead", deadStateData, this);
         dodgeState = new E2_DodgeState(this, stateMachine, "dodge", dodgeStateData, this);
         rangedAttackState = new E2_RangedAttackState(this, stateMachine, "rangedAttack", rangedAttackPosition, rangedAttackStateData, this);
+
+        stats.Poise.OnCurrentValueZero += HandlePoiseZero;
+    }
+
+    private void HandlePoiseZero()
+    {
+        stateMachine.ChangeState(stunState);
     }
 
     private void Start()
     {
         stateMachine.Initialize(moveState);
+    }
+
+    private void OnDestroy()
+    {
+        stats.Poise.OnCurrentValueZero -= HandlePoiseZero;
     }
 
     public override void OnDrawGizmos()
