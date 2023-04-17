@@ -1,3 +1,4 @@
+using Bardent.CoreSystem.StatsSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,52 +11,24 @@ namespace Bardent.CoreSystem
     /// </summary>
     public class Stats : CoreComponent
     {
-        /// <summary>
-        /// 最大生命值
-        /// </summary>
-        [SerializeField] private float maxHealth;
-        /// <summary>
-        /// 当前生命值
-        /// </summary>
-        private float currentHealth;
+        [field: SerializeField] public Stat Health { get; private set; }
+        [field: SerializeField] public Stat Poise { get; private set; }
 
-        /// <summary>
-        /// 生命值为零事件
-        /// </summary>
-        public event Action HealthZero;
+        [SerializeField] private float poiseRecoveryRate;
 
         protected override void Awake()
         {
             base.Awake();
 
-            currentHealth = maxHealth;
+            Health.Init();
+            Poise.Init();
         }
 
-        /// <summary>
-        /// 根据伤害值减少当前生命值
-        /// </summary>
-        /// <param name="amount">伤害值</param>
-        public void DecreaseHealth(float amount)
+        private void Update()
         {
-            currentHealth -= amount;
+            if (Poise.CurrentValue.Equals(Poise.MaxValue)) return;
 
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                // Invoke the event. ?. needed to avoid errors if there are no subscribers.
-                // 调用事件。 ?. 如果没有订阅者，需要避免错误。
-                HealthZero?.Invoke();
-                Debug.Log("Health is zero!!");
-            }
-        }
-
-        /// <summary>
-        /// 根据恢复值增加当前生命值
-        /// </summary>
-        /// <param name="amount">恢复值</param>
-        public void IncreaseHealth(float amount)
-        {
-            currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+            Poise.Increase(poiseRecoveryRate * Time.deltaTime);
         }
     }
 }

@@ -1,3 +1,4 @@
+using Bardent.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Bardent.CoreSystem
     public class CoreComponent : MonoBehaviour, ILogicUpdate
     {
         /// <summary>
-        /// 游戏对象上的核心组件
+        /// 游戏对象上的核心
         /// </summary>
         protected Core core;
 

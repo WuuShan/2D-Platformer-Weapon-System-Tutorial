@@ -18,17 +18,12 @@ namespace Bardent.CoreSystem
         {
             base.Init(core);
 
-            Stats.HealthZero += Die;
-        }
-
-        private void OnEnable()
-        {
-            // Stats.HealthZero += Die;
+            Stats.Health.OnCurrentValueZero += Die;
         }
 
         private void OnDisable()
         {
-            Stats.HealthZero -= Die;
+            Stats.Health.OnCurrentValueZero -= Die;
         }
 
         /// <summary>
