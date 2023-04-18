@@ -11,7 +11,13 @@ namespace Bardent.Weapons
     /// </summary>
     public class WeaponGenerator : MonoBehaviour
     {
+        /// <summary>
+        /// 要生成的武器
+        /// </summary>
         [SerializeField] private Weapon weapon;
+        /// <summary>
+        /// 对应的武器数据
+        /// </summary>
         [SerializeField] private WeaponDataSO data;
 
         /// <summary>
@@ -29,8 +35,14 @@ namespace Bardent.Weapons
         /// </summary>
         private List<Type> componentDependencies = new List<Type>();
 
+        /// <summary>
+        /// 动画器
+        /// </summary>
+        private Animator anim;
+
         private void Start()
         {
+            anim = GetComponentInChildren<Animator>();
             GenerateWeapon(data);
         }
 
@@ -40,6 +52,10 @@ namespace Bardent.Weapons
             GenerateWeapon(data);
         }
 
+        /// <summary>
+        /// 根据武器数据生成武器的各种组件
+        /// </summary>
+        /// <param name="data">数据</param>
         public void GenerateWeapon(WeaponDataSO data)
         {
             weapon.SetData(data);
@@ -74,6 +90,8 @@ namespace Bardent.Weapons
             {
                 Destroy(weaponComponent);
             }
+
+            anim.runtimeAnimatorController = data.AnimatorController;
         }
     }
 }

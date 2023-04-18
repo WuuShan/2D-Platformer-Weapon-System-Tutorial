@@ -219,7 +219,6 @@ public class PlayerInputHandler : MonoBehaviour
         // if (playerInput.currentControlScheme == "Keyboard")
         if (playerInput.currentControlScheme == "Keyboard")
         {
-            Debug.Log(1);
             RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
         }
 

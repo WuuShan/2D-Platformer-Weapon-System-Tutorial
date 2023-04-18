@@ -96,6 +96,10 @@ namespace Bardent.Weapons
             Core = core;
         }
 
+        /// <summary>
+        /// 设置武器数据
+        /// </summary>
+        /// <param name="data">数据</param>
         public void SetData(WeaponDataSO data)
         {
             Data = data;

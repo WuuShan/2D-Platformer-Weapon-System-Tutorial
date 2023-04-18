@@ -34702,7 +34702,7 @@ PrefabInstance:
     - target: {fileID: 1898614345674619375, guid: d9e55ef947b45984d978a76a3785326e, type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 11400000, guid: e9f027651a57f3c40993dda8d2b246f1, type: 2}
+      objectReference: {fileID: 11400000, guid: 94d82075d0eef3545862c0b870d30b1f, type: 2}
     - target: {fileID: 6980079268433395521, guid: d9e55ef947b45984d978a76a3785326e, type: 3}
       propertyPath: m_Name
       value: PrimaryWeapon
@@ -34755,5 +34755,9 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6980079268933011629, guid: d9e55ef947b45984d978a76a3785326e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dd5be7ac4bab3ff448006cfe119885d4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9e55ef947b45984d978a76a3785326e, type: 3}

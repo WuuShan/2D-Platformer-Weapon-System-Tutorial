@@ -27,6 +27,8 @@ namespace Bardent.Weapons
         /// </summary>
         public event Action OnAttackAction;
 
+        public event Action<AttackPhases> OnEnterAttackPhases;
+
         /// <summary>
         /// 广播动画结束后触发的事件
         /// </summary>
@@ -43,5 +45,7 @@ namespace Bardent.Weapons
         /// 广播角色执行攻击动作时触发的事件
         /// </summary>
         private void AttackActionTrigger() => OnAttackAction?.Invoke();
+
+        private void EnterAttackPhases(AttackPhases phase) => OnEnterAttackPhases?.Invoke(phase);
     }
 }
