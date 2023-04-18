@@ -13,6 +13,11 @@ namespace Bardent.Weapons
     public class WeaponDataSO : ScriptableObject
     {
         /// <summary>
+        /// 动画控制器
+        /// </summary>
+        [field: SerializeField] public RuntimeAnimatorController AnimatorController { get; private set; }
+
+        /// <summary>
         /// 攻击段数
         /// </summary>
         [field: SerializeField] public int NumberOfAttacks { get; private set; }
@@ -34,6 +39,10 @@ namespace Bardent.Weapons
             return ComponentData.OfType<T>().FirstOrDefault();
         }
 
+        /// <summary>
+        /// 获得武器挂载的所有依赖组件
+        /// </summary>
+        /// <returns></returns>
         public List<Type> GetAllDependencies()
         {
             return ComponentData.Select(component => component.ComponentDependency).ToList();
