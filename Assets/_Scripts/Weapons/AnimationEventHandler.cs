@@ -26,6 +26,7 @@ namespace Bardent.Weapons
         /// 在角色执行攻击动作时触发的事件
         /// </summary>
         public event Action OnAttackAction;
+        public event Action OnMinHoldPassed;
 
         public event Action<AttackPhases> OnEnterAttackPhases;
 
@@ -45,6 +46,8 @@ namespace Bardent.Weapons
         /// 广播角色执行攻击动作时触发的事件
         /// </summary>
         private void AttackActionTrigger() => OnAttackAction?.Invoke();
+
+        private void MinHoldPassedTrigger() => OnMinHoldPassed?.Invoke();
 
         private void EnterAttackPhases(AttackPhases phase) => OnEnterAttackPhases?.Invoke(phase);
     }

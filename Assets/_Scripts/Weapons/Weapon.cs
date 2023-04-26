@@ -12,6 +12,8 @@ namespace Bardent.Weapons
     /// </summary>
     public class Weapon : MonoBehaviour
     {
+        public event Action<bool> OnCurrentInputChange;
+
         /// <summary>
         /// 重置攻击计数器的冷却时间
         /// </summary>
@@ -30,6 +32,19 @@ namespace Bardent.Weapons
             private set => currentAttackCounter = value >= Data.NumberOfAttacks ? 0 : value;
         }
 
+        public bool CurrentInput
+        {
+            get => currentInput;
+            set
+            {
+                if (currentInput != value)
+                {
+                    currentInput = value;
+                    OnCurrentInputChange?.Invoke(currentInput);
+                }
+            }
+        }
+
         /// <summary>
         /// 武器开始攻击事件
         /// </summary>
@@ -40,7 +55,7 @@ namespace Bardent.Weapons
         public event Action OnExit;
 
         /// <summary>
-        /// 玩家攻击动画机
+        /// 玩家攻击动画器
         /// </summary>
         private Animator anim;
         /// <summary>
@@ -71,6 +86,8 @@ namespace Bardent.Weapons
         /// 负责重置攻击计数器的计时器
         /// </summary>
         private Timer attackCounterResetTimer;
+
+        private bool currentInput;
 
         /// <summary>
         /// 使用武器攻击时，执行一次
