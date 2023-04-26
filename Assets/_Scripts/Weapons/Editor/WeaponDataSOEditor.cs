@@ -56,6 +56,8 @@ namespace Bardent.Weapons
 
                         // 将 ComponentData 添加到 WeaponDataSO 对象中
                         dataSO.AddData(comp);
+
+                        EditorUtility.SetDirty(dataSO);
                     }
                 }
             }

@@ -13,13 +13,30 @@ public class PlayerAttackState : PlayerAbilityState
     /// </summary>
     private Weapon weapon;
 
-    public PlayerAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName, Weapon weapon)
-        : base(player, stateMachine, playerData, animBoolName)
+    private int inputIndex;
+
+    public PlayerAttackState(
+        Player player,
+        PlayerStateMachine stateMachine,
+        PlayerData playerData,
+        string animBoolName,
+        Weapon weapon,
+        CombatInputs input
+    ) : base(player, stateMachine, playerData, animBoolName)
     {
         this.weapon = weapon;
 
+        inputIndex = (int)input;
+
         // 订阅事件
         weapon.OnExit += ExitHandler;
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+
+        weapon.CurrentInput = player.InputHandler.attackInputs[inputIndex];
     }
 
     public override void Enter()
